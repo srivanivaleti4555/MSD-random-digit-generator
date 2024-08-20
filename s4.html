@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Digit Generator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image:url(https://png.pngtree.com/background/20220714/original/pngtree-cute-purple-circle-background-free-to-print-picture-image_1606392.jpg);
+background-size:cover;
+
+        }
+
+        .generator {
+            padding: 20px;
+            background-image:url(https://i.pinimg.com/originals/1c/cb/24/1ccb2489899ae4255043dc10557fc7da.jpg);
+background-size:cover;
+            border: 2px solid #000;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-box {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="generator">
+        <h2>Random Digit Generator</h2>
+        <input type="number" id="minValue" class="input-box" placeholder="Enter minimum value" required>
+        <input type="number" id="maxValue" class="input-box" placeholder="Enter maximum value" required>
+        <button class="submit-btn" id="generateBtn">Generate Random Number</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            const minValue = parseInt(document.getElementById('minValue').value);
+            const maxValue = parseInt(document.getElementById('maxValue').value);
+            const resultBox = document.getElementById('result');
+
+            if (isNaN(minValue) || isNaN(maxValue)) {
+                resultBox.textContent = 'Please enter valid numbers.';
+                return;
+            }
+
+            if (minValue >= maxValue) {
+                resultBox.textContent = 'Minimum value must be less than maximum value.';
+                return;
+            }
+
+            const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+            resultBox.textContent = `Random Number: ${randomNumber}`;
+        });
+    </script>
+
+</body>
+</html>
